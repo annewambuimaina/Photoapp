@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Album App</title>
+    <link rel="stylesheet" href="styles.css">
+    
+   <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    
+   <!-- Add Firebase products that you want to use -->
+   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+   
+   <!-- Initialize Firebase -->
+   <script src="firebase-init.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Welcome to Photo Album App</h1>
+        <p>Store and share your memories with ease!</p>
+        <a href="login.html" class="cta-button">Get Started</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Photo Album App. All rights reserved.</p>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
