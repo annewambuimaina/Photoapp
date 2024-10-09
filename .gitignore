@@ -1,2 +1,20 @@
 # Google App Engine generated folder
 appengine-generated/
+# Firebase config
+firebase-config.js
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE / Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
