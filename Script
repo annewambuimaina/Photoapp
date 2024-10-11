@@ -1,0 +1,50 @@
+const { Builder, By, Key, until } = require('selenium-webdriver');
+
+async function testSearchFunctionality(searchTerm) {
+    // Initialize the chrome WebDriver instance
+    let driver = await new Builder().forBrowser('chrome').build();
+
+    try {
+        // Open the photo/album listing page
+        await driver.get('file:///C:/Users/Zell/.cursor-tutor/Photoapp/index.html');
+
+        // Wait for the search box to be visible and find it
+        let searchBox = await driver.wait(until.elementLocated(By.css('.search-input')), 10000);
+
+        // Enter the search term and submit the search
+        await searchBox.sendKeys(searchTerm, Key.RETURN);
+
+
+        // Wait for the search results to load
+        await driver.wait(until.elementLocated(By.css('.album-results')), 10000);
+
+        // Fetch all the results that match the search
+        let results = await driver.findElements(By.css('.album-item'));
+
+        // Validate search results
+
+        if (results.length > 0) {
+            console.log(`Search for "${searchTerm}" returned ${results.length} result(s).`);
+
+            // check if the first result contains the search term in the title
+            let firstResultTitle = await results[0].findElement(By.css('.album-title')).getText();
+            if (firstResultTitle.toLowerCase().includes(searchTerm.toLowerCase())) {
+                console.log(`First result "${firstResultTitle}" matches the search term.`);
+            } else {
+                console.log(`First result "${firstResultTitle}" does not seem to match the search term.`);
+            }
+        } else {
+            console.log(`No results found for the search term "${searchTerm}".`);
+        }
+
+    } catch (error) {
+        console.error('An error occurred during the search test:', error);
+    } finally {
+        // Close the browser
+        await driver.quit();
+    }
+}
+
+// Example usage with a dynamic search term
+testSearchFunctionality('sunset');  // You can replace 'sunset' with any dynamic term
+
